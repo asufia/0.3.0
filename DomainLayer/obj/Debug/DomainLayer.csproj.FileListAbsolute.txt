@@ -1,0 +1,7 @@
+C:\TrolloRep\DomainLayer\bin\Debug\DomainLayer.dll
+C:\TrolloRep\DomainLayer\bin\Debug\DomainLayer.pdb
+C:\TrolloRep\DomainLayer\bin\Debug\DAL.dll
+C:\TrolloRep\DomainLayer\bin\Debug\DAL.pdb
+C:\TrolloRep\DomainLayer\obj\Debug\DomainLayer.csprojResolveAssemblyReference.cache
+C:\TrolloRep\DomainLayer\obj\Debug\DomainLayer.dll
+C:\TrolloRep\DomainLayer\obj\Debug\DomainLayer.pdb

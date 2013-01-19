@@ -1,0 +1,38 @@
+﻿@model DomainLayer.Card
+@{
+    ViewBag.Title = "Card";
+}
+@section featured {
+    <section class="featured">
+        <div class="content-wrapper">
+            <hgroup class="title">
+                <h1>@ViewBag.Title.</h1>
+                <h2>@ViewBag.Message</h2>
+            </hgroup>
+        </div>
+    </section>
+     <section class="content-wrapper main-content clear-fix">
+
+              @if(Model == null)
+              {
+                  return;
+              }
+              
+                <h3> @Model.Name</h3>
+
+               @*  @if(Model.CardHolderList != null && Model.CardHolderList.Count > 0)
+                 {
+                     foreach(var cardHolder in Model.CardHolderList)
+                     {
+                          <li>@Html.ActionLink(cardHolder.Name, "PresentCardHolder", "CardHolder", new { boardId = Model.BoardId, cardHolderId = cardHolder.CardHolderID }, null)</li>
+                     }
+                 }
+
+                 @* <input  type="submit" @Html.ActionLink("Nova Lista", "NewCardHolder","CardHolder", new { id = Model.BoardId }, null) />*@*@
+        @*  @using (Html.BeginForm("NewCardHolder", "CardHolder", new {id = Model.BoardId}, FormMethod.Post))
+            {
+                <input type="submit" value="Nova Lista"/>
+            }*@
+         
+        </section>
+}

@@ -1,0 +1,38 @@
+﻿@model DomainLayer.CardHolder
+@{
+    ViewBag.Title = "CardHolder";
+}
+@section featured {
+    <section class="featured">
+        <div class="content-wrapper">
+            <hgroup class="title">
+                <h1>@ViewBag.Title.</h1>
+                <h2>@ViewBag.Message</h2>
+            </hgroup>
+        </div>
+    </section>
+     <section class="content-wrapper main-content clear-fix">
+
+              @if(Model == null)
+              {
+                  return;
+              }
+              
+                <h3> @Model.Name</h3>
+
+                 @if (Model.CardList != null && Model.CardList.Count > 0)
+                 {
+
+                     foreach (var card in Model.CardList)
+                     {
+                         // <li>@Html.ActionLink(card.Name, "PresentCard", "Card", new { cardHolderId = Model.CardHolderID,  cardId = card.CardID }, null)</li>
+                     }
+                 }
+
+          @using (Html.BeginForm("NewCard", "Card", new {id = Model.CardHolderID}, FormMethod.Post))
+            {
+                <input type="submit" value="Novo Cartao"/>
+            }
+         
+        </section>
+    }

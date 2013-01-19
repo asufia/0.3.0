@@ -1,0 +1,71 @@
+﻿@model DomainLayer.Board
+@{
+    if(Model == null)
+    {
+        return;
+    }
+    ViewBag.Title = @Model.Name;
+}
+@section featured {
+    <section class="featured">
+        <div class="content-wrapper">
+            <hgroup class="title">
+                <h1>@ViewBag.Title.</h1>
+                <h2>@ViewBag.Message</h2>
+            </hgroup>
+        </div>
+    </section>
+     <section class="content-wrapper main-content clear-fix">
+
+              @if(Model == null)
+              {
+                  return;
+              }
+
+                 @if(Model.CardHolderList != null && Model.CardHolderList.Count > 0)
+                 {
+
+                     foreach(var cardHolder in Model.CardHolderList)
+                     {
+                          //<span class="cardHolder">@Html.ActionLink(cardHolder.Name, "PresentCardHolder", "CardHolder", new { boardId = Model.BoardId, cardHolderId = cardHolder.CardHolderID }, null)</span>
+                          <div class="cardHolderBox">
+                               @if (@cardHolder.CardList != null && @cardHolder.CardList.Count > 0)
+                              {
+                                <img id="btDelete" src="~/Images/delete.Enablegif.gif" onclick="DeleteList(@cardHolder.CardHolderID)" />
+                               }
+                              else
+                              {
+                                 <img id="btDeleteListDisabele" src="~/Images/deleteDisable.gif" />
+                               }
+                             <span id="CardHolderName"> @cardHolder.Name</span>
+
+                              @if (@cardHolder.CardList != null && @cardHolder.CardList.Count > 0)
+                              {
+                                  foreach (var card in cardHolder.CardList)
+                                  {
+                                   <div id="cardBox">
+                                       <span> @card.Name </span>
+                                        @using (Html.BeginForm("EditCard", "Card", new {id = @cardHolder.CardHolderID}, FormMethod.Post))
+                                        {
+                                            <input id="btEdit" type="image" src="~/Images/edit.png"/>
+                                        }
+                                      </div> 
+                                     
+                                  } 
+                              }
+                                @using (Html.BeginForm("NewCard", "Card", new {id = @cardHolder.CardHolderID}, FormMethod.Post))
+                                {
+                                    <input id="btNewCard" type="submit" value="+Cartão"/>
+                                }
+                          </div>
+
+                     }
+                 }
+           
+          @using (Html.BeginForm("NewCardHolder", "CardHolder", new {id = Model.BoardId}, FormMethod.Post))
+            {
+                <input id="btNewList" type="submit" value="Nova Lista"/>
+            }
+         
+        </section>
+}

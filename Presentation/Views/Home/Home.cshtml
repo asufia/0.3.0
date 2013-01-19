@@ -1,0 +1,29 @@
+﻿@model List<DomainLayer.Board>
+@{
+    ViewBag.Title = "Os meus Quadros";
+}
+@section featured {
+    <section class="featured">
+        <div class="content-wrapper">
+            <hgroup class="title">
+                <h1>@ViewBag.Title.</h1>
+                <h2>@ViewBag.Message</h2>
+            </hgroup>
+        </div>
+    </section>
+     <section class="content-wrapper main-content clear-fix">
+
+         <div class="boardList">
+        @foreach(var board in Model)
+         {
+            <li id="exp">@Html.ActionLink(board.Name, "PresentBoard", new { id = board.BoardId }, null)</li>
+         }
+
+    </div>
+         @using (Html.BeginForm("NewBoard","Board", FormMethod.Get))
+         {
+         <input id="btSaveBoard" type="submit" value="Novo Quadro" />
+         }
+         
+        </section>
+}

@@ -1,0 +1,41 @@
+﻿@model DomainLayer.CardHolder
+@{
+    ViewBag.Title = "Nova Lista";
+}
+@section featured {
+    <section class="featured">
+        <div class="content-wrapper">
+            <hgroup class="title">
+                <h1>@ViewBag.Title.</h1>
+                <h2>@ViewBag.Message</h2>
+            </hgroup>
+        </div>
+    </section>
+     <section class="content-wrapper main-content clear-fix">
+  
+         @using (Html.BeginForm("SaveCardHolder", "CardHolder", FormMethod.Post))
+         {
+             <fieldset>
+                @* @if(string.IsNullOrEmpty(Model.Name))
+                 {
+                    <legend>Novo Quadro</legend>
+                 }
+                 @else
+                 {
+                    <legend>Novo Quadro</legend>
+                 }*@
+                 <legend>Nova Lista</legend>
+
+                <ol>
+                    <li>
+                        @Html.LabelFor(m=> m.Name)
+                        @Html.TextBoxFor(m => m.Name)
+                    </li>
+                </ol>
+                <input type="submit" value="Salvar" />
+            </fieldset>
+         
+         }
+         
+        </section>
+}
